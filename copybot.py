@@ -3,7 +3,6 @@ Polymarket Copy Trading Bot
 Monitors a target wallet and instantly mirrors its trades on your own wallet.
 """
 
-import json
 import logging
 import os
 import time
@@ -16,7 +15,6 @@ from datetime import datetime
 from typing import Optional
 
 import yaml
-import requests
 from flask import Flask, jsonify, render_template_string
 from flask_cors import CORS
 from web3 import Web3
@@ -119,10 +117,6 @@ class BotState:
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
-
-def parse_token_amount(amount: int, decimals: int = 18) -> float:
-    return amount / (10 ** decimals)
-
 
 def get_rpc_w3() -> Web3:
     rpc = os.getenv("POLYGON_RPC", "https://polygon-rpc.com")
@@ -551,7 +545,7 @@ def main():
     log.info("=" * 60)
     log.info("Polymarket Copy Trading Bot")
     log.info(f"Target wallet : {cfg['watch_wallet']}")
-    log.info(f"Max spend     : $%s" % cfg.get("max_spend_per_trade", 50))
+    log.info(f"Max spend     : ${cfg.get('max_spend_per_trade', 50)}")
     log.info(f"Size mult     : {cfg.get('position_size_multiplier', 1.0)}x")
     log.info(f"Poll interval : {cfg.get('poll_interval', 2.0)}s")
     log.info("=" * 60)
