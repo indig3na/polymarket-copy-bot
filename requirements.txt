@@ -1,0 +1,7 @@
+web3>=7.0
+py-clob-client>=0.30
+flask>=3.0
+flask-cors>=4.0
+pyyaml>=6.0
+requests>=2.31
+jinja2>=3.1
