@@ -1,0 +1,26 @@
+# Polymarket Copy Trading Bot — Configuration
+# Copy this file to config.yaml and fill in your values
+
+# Wallet to mirror (paste the address you want to copy)
+watch_wallet: "0x0000000000000000000000000000000000000000"
+
+# Your wallet private key (DO NOT share this file!)
+# Use env var POLYMARKET_PRIVATE_KEY instead for production
+your_private_key: "${POLYMARKET_PRIVATE_KEY}"
+
+# Funder address (same as your wallet address if using EOA)
+funder_address: "0x0000000000000000000000000000000000000000"
+
+# Trading settings
+position_size_multiplier: 1.0   # Multiplier for mirrored trade size (1.0 = exact copy)
+max_slippage: 0.02               # Max slippage tolerance (2%)
+max_spend_per_trade: 50.0        # Max USDC to spend per mirrored trade
+
+# Poll interval in seconds
+poll_interval: 2.0
+
+# Flask web dashboard port
+dashboard_port: 5050
+
+# Logging
+log_level: "INFO"
